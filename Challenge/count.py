@@ -2,11 +2,11 @@ from flask import Flask
 import redis
 
 app = Flask(__name__)
-r = redos.Redis(host='redis' , port=6379)
+r = redis.Redis(host='redis' , port=6379)
 
 @app.route('/')
 def welcome():
-    return "Welcome to thr CoderCo Container Challenge"
+    return "Welcome to the CoderCo Container Challenge"
 
 @app.route('/count')
 def count():
