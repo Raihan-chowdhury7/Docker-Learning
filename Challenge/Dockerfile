@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY . .
 
-RUN pip install flask redis 
+RUN pip install flask redis pytz
 
 EXPOSE 5002
 

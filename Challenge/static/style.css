@@ -1,0 +1,75 @@
+#particles-js {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: transparent;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #0f0f0f, #1a1a2e);
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+    background: rgba(0, 0, 50, 0.3);
+    padding: 2rem 3rem;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 128, 255, 0.5);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(0, 128, 255, 0.4);
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #ffffff;
+}
+
+h1 span {
+    color: #00aaff;
+    text-shadow: 0 0 10px #00aaff, 0 0 20px #00aaff;
+}
+
+.highlight {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #00ffff;
+    text-shadow: 0 0 5px #00ffff;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.button {
+    margin-top: 1.5rem;
+    display: inline-block;
+    background: #007bff;
+    color: #ffffff;
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    box-shadow: 0 0 10px #007bff;
+    transition: all 0.2s ease-in-out;
+}
+
+.button:hover {
+    background: #00aaff;
+    box-shadow: 0 0 20px #00aaff;
+    transform: scale(1.05);
+}
+
+.glow {
+    color: #00aaff;
+    text-shadow: 0 0 10px #00aaff, 0 0 20px #00aaff;
+    font-weight: bold;
+}

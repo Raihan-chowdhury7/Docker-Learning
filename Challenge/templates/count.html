@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Visit Counter</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- Particles background -->
+    <div id="particles-js"></div>
+
+    <div class="container">
+        <h1><span>CoderCo Container Challenge</span></h1>
+        <p>This page has been visited <span class="highlight" id="visit-count">0</span> times.</p>
+
+        <!-- Chart -->
+        <canvas id="visitsChart" width="400" height="200"></canvas>
+
+        <a class="button" href="/">Go Back</a>
+    </div>
+
+    <!-- particles.js -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script>
+      particlesJS("particles-js", {
+        particles: {
+          number: { value: 80, density: { enable: true, value_area: 800 } },
+          color: { value: "#00aaff" },
+          shape: { type: "circle" },
+          opacity: { value: 0.5 },
+          size: { value: 3, random: true },
+          line_linked: {
+            enable: true,
+            distance: 150,
+            color: "#00aaff",
+            opacity: 0.4,
+            width: 1
+          },
+          move: { enable: true, speed: 2 }
+        },
+        interactivity: {
+          events: {
+            onhover: { enable: true, mode: "repulse" },
+            onclick: { enable: true, mode: "push" }
+          },
+          modes: {
+            repulse: { distance: 100 },
+            push: { particles_nb: 4 }
+          }
+        },
+        retina_detect: true
+      });
+    </script>
+
+    <!-- Animated number count -->
+    <script>
+      const target = {{ count }};
+      const display = document.getElementById("visit-count");
+      let current = 0;
+      const step = Math.ceil(target / 50);
+      const interval = setInterval(() => {
+        current += step;
+        if (current >= target) {
+          display.textContent = target;
+          clearInterval(interval);
+        } else {
+          display.textContent = current;
+        }
+      }, 20);
+    </script>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+  const labels = {{ labels | safe }};
+  const data = {{ values | safe }};
+  const ctx = document.getElementById('visitsChart').getContext('2d');
+
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: labels,
+      datasets: [{
+        label: 'Visits Per Hour',
+        data: data,
+        backgroundColor: '#00aaff',
+        borderRadius: 5
+      }]
+    },
+    options: {
+      responsive: true,
+      scales: {
+        y: {
+          beginAtZero: true,
+          ticks: {
+            stepSize: 1,
+            callback: function(value) {
+              return Number.isInteger(value) ? value : '';
+            }
+          }
+        },
+        x: {
+          title: { display: true, text: 'Hour (BST)' }
+        }
+      }
+    }
+  });
+</script>
+
+</body>
+</html>
